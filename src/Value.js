@@ -8,7 +8,8 @@ function Value(props) {
   return (
     <div>
       <h1 className="kkal_value">
-        {ResultKkal} / <span>{props.DayLimit}</span> {props.LANG_CH.Ccal}
+        {ResultKkal} / <span>{props.DayLimit}</span>
+        {props.LANG_CH.Ccal}
       </h1>
     </div>
   );

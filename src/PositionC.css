@@ -1,13 +1,19 @@
 .position_item {
+  transition: 0.2s;
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  background-color: rgb(148, 255, 210);
+  background-color: #6fb98f;
   margin: 10px 0;
   font-size: 32px;
   padding: 20px;
   color: rgb(0, 0, 0);
+}
+.position_item:hover {
+  transition: 0.2s;
+  background-color: #97d4b2;
+  cursor: pointer;
 }
 
 .content2 {
@@ -19,17 +25,20 @@
 }
 
 .item_kaloraj {
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(0, 183, 255);
+  background-color: #021c1e;
   border-radius: 10px;
-  width: 70px;
+  width: auto;
+  padding: 15px;
   height: 70px;
 }
 
 .selected {
-  background-color: rgb(173, 252, 219);
-  box-shadow: 0 0 15px rgb(3, 94, 59);
+  background-color: #97d4b2;
+  box-shadow: 0 0 10px rgb(118, 150, 138);
   color: rgb(0, 0, 0);
+  transition: 0.2s;
 }

@@ -13,12 +13,14 @@
   display: flex;
   justify-content: center;
   margin-top: 100px;
+  font-size: 2em;
+  filter: drop-shadow(0px 0px 2px rgb(197, 247, 234));
 }
 
 .content {
   padding: 20px 30px;
   display: flex;
-  background-color: rgb(153, 109, 109);
+  background-color: #2c7973;
   width: 100%;
   height: 100%;
   border-radius: 50px;

@@ -50,10 +50,10 @@ function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
   };
 
   return (
-    <div className="item_wrap">
-      <div className="item_menu">
+    <div className="item_wrap_max">
+      <div className="item_menu_max">
         <label className="labels_max">{LANG_CH.GenderU}</label>
-        <div className="gender">
+        <div className="gender_max">
           <label>
             <input
               type="radio"
@@ -73,7 +73,7 @@ function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
             {LANG_CH.WomanU}
           </label>
         </div>
-        <div className="max_data">
+        <div className="max_data_max">
           <label className="labels_max">{LANG_CH.AgeU}</label>
           <label className="labels_max">{LANG_CH.RoctU}</label>
           <label className="labels_max">{LANG_CH.VesU}</label>
@@ -101,7 +101,7 @@ function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
         </div>
         <label className="labels_max">{LANG_CH.FizU}</label>
         <select
-          className="activity"
+          className="activity_max"
           name="activityy"
           onChange={(e) => handleActChange(e.target.value)}
         >
@@ -111,11 +111,11 @@ function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
           <option value="high">{LANG_CH.Level4}</option>
           <option value="very_high">{LANG_CH.Level5}</option>
         </select>
-        <div className="buttons">
-          <button className="but" onClick={handleConfirmClick}>
+        <div className="buttons_max">
+          <button className="but_max" onClick={handleConfirmClick}>
             {LANG_CH.ButConfirm}
           </button>
-          <button className="but" onClick={onCloseMax}>
+          <button className="but_max" onClick={onCloseMax}>
             {LANG_CH.ButReject}
           </button>
         </div>

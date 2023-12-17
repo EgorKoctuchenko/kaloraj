@@ -4,64 +4,45 @@ import "./Value";
 import ChooseBar from "./ChooseBar";
 import Value from "./Value";
 import HistoryC from "./HistoryC";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddItem from "./AddItem";
 import YourMax from "./YourMax";
 import RenameItem from "./RenameItem";
 
 function App() {
+  //Загружаем LIST из localStorage (поскольку пользователь явно будет
+  //возвращаться на сайт :D )
+  const savedYourList = JSON.parse(localStorage.getItem("YOUR_LIST")) || [{}];
+  const [YOUR_LIST, setYourList] = useState(savedYourList);
+  useEffect(() => {
+    localStorage.setItem("YOUR_LIST", JSON.stringify(YOUR_LIST));
+  }, [YOUR_LIST]);
+  ///
+  //Также, сохраняем значения калорийности (максимальной)
+  ///
+  const savedYourLimit = parseInt(localStorage.getItem("YourLimit")) || 2000;
+  const [YourLimit, setYourLimit] = useState(savedYourLimit);
+  useEffect(() => {
+    localStorage.setItem("YourLimit", JSON.stringify(YourLimit));
+  }, [YourLimit]);
+  ///
+  //И, языка! :)
+  //
+  const savedLang = parseInt(localStorage.getItem("Language")) || 0;
+  const [Language, setLang] = useState(savedLang);
+  useEffect(() => {
+    localStorage.setItem("Language", JSON.stringify(Language));
+  }, [Language]);
+
   const [YourKaloraj, setYourKaloraj] = useState(0);
   const [isAddItemOpen, setAddItemOpen] = useState(false);
   const [isYourMax, setYourMax] = useState(false);
   const [isRenameItem, setRename] = useState(false);
-  const [YourLimit, setYourLimit] = useState(2000);
   const [IndexToDelete, setIndexToDelete] = useState(-1);
-  const [Language, setLang] = useState(0);
-  //Позиции (в виде массива объектов)
-  const [YOUR_LIST, setYourList] = useState([
-    {
-      Name: "Суп",
-      Gramm: 100,
-      Kaloraj: 400,
-    },
-    {
-      Name: "Борщ",
-      Gramm: 100,
-      Kaloraj: 200,
-    },
-  ]);
   //
   //Переключение языка
   //
   const LANG_CH = [
-    {
-      Lang: "RU",
-      Menu1: "Добавить",
-      Menu2: "Изменить",
-      Menu3: "Удалить",
-      Menu4: "Рассчитать свою норму",
-      YourNorm: "Ваша дневная норма",
-      Ccal: "Ккал",
-      HistoryProd: "Ваша история продуктов:",
-      NamePos: "Введите название блюда",
-      NamePos_2: "Яблоко:",
-      VesPos: "Введите вес (в граммах):",
-      CcalPos: "Введите калорийность (на 100гр):",
-      ButConfirm: "Подтвердить",
-      ButReject: "Отмена",
-      GenderU: "Пол",
-      ManU: "Мужчина",
-      WomanU: "Женщина",
-      AgeU: "Возраст",
-      RoctU: "Рост",
-      VesU: "Вес",
-      FizU: "Физическая активность",
-      Level1: "Минимальная",
-      Level2: "Низкая",
-      Level3: "Средняя",
-      Level4: "Высокая",
-      Level5: "Максимальная",
-    },
     {
       Lang: "UA",
       Menu1: "Додати",
@@ -89,6 +70,34 @@ function App() {
       Level3: "Середня",
       Level4: "Висока",
       Level5: "Максимальна",
+    },
+    {
+      Lang: "RU",
+      Menu1: "Добавить",
+      Menu2: "Изменить",
+      Menu3: "Удалить",
+      Menu4: "Рассчитать свою норму",
+      YourNorm: "Ваша дневная норма",
+      Ccal: "Ккал",
+      HistoryProd: "Ваша история продуктов:",
+      NamePos: "Введите название блюда",
+      NamePos_2: "Яблоко:",
+      VesPos: "Введите вес (в граммах):",
+      CcalPos: "Введите калорийность (на 100гр):",
+      ButConfirm: "Подтвердить",
+      ButReject: "Отмена",
+      GenderU: "Пол",
+      ManU: "Мужчина",
+      WomanU: "Женщина",
+      AgeU: "Возраст",
+      RoctU: "Рост",
+      VesU: "Вес",
+      FizU: "Физическая активность",
+      Level1: "Минимальная",
+      Level2: "Низкая",
+      Level3: "Средняя",
+      Level4: "Высокая",
+      Level5: "Максимальная",
     },
     {
       Lang: "EN",
