@@ -1,0 +1,25 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0 70px;
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+.title_hist {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.content {
+  padding: 20px 30px;
+  display: flex;
+  background-color: rgb(153, 109, 109);
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
