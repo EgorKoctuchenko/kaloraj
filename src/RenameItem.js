@@ -6,6 +6,7 @@ function RenameItem({
   onConfirmRename,
   YOUR_LIST,
   IndexToRename,
+  LANG_CH,
 }) {
   const [InputName, setDishName] = useState(YOUR_LIST[IndexToRename].Name);
   const [InputGramm, setWeight] = useState(YOUR_LIST[IndexToRename].Gramm);
@@ -19,25 +20,25 @@ function RenameItem({
   return (
     <div className="item_wrap">
       <div className="item_menu">
-        <label className="label_cl">Введите название блюда</label>
+        <label className="label_cl">{LANG_CH.NamePos}</label>
         <input
-          placeholder="Яблоко"
+          placeholder={YOUR_LIST[IndexToRename].Name}
           className="input_cl"
           type="text"
           value={InputName}
           onChange={(e) => setDishName(e.target.value)}
         ></input>
-        <label className="label_cl">Введите вес (в граммах)</label>
+        <label className="label_cl">{LANG_CH.VesPos}</label>
         <input
-          placeholder="100"
+          placeholder={YOUR_LIST[IndexToRename].Gramm}
           className="input_cl"
           type="number"
           value={InputGramm}
           onChange={(e) => setWeight(e.target.value)}
         ></input>
-        <label className="label_cl">Введите калорийность (на 100гр)</label>
+        <label className="label_cl">{LANG_CH.CcalPos}</label>
         <input
-          placeholder="56"
+          placeholder={YOUR_LIST[IndexToRename].Kaloraj}
           className="input_cl"
           type="number"
           value={InputCcal}
@@ -45,10 +46,10 @@ function RenameItem({
         ></input>
         <div className="buttons">
           <button className="but" onClick={handleConfirmClick}>
-            Подтвердить
+            {LANG_CH.ButConfirm}
           </button>
           <button className="but" onClick={onRenameItem}>
-            Отмена
+            {LANG_CH.ButReject}
           </button>
         </div>
       </div>

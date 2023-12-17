@@ -5,7 +5,10 @@ function PositionC(props) {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleItemClick = (index) => {
-    setSelectedItem(index);
+    setSelectedItem((prevSelectedItem) => {
+      // Если текущий элемент уже выбран, сбросить выбор, иначе установить выбор
+      return prevSelectedItem === index ? (index = -1) : index;
+    });
     props.GetIndex(index);
   };
 

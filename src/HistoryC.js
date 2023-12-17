@@ -2,7 +2,7 @@ import "./HistoryC.css";
 import PositionC from "./PositionC";
 import React, { useEffect, useState } from "react";
 
-function HistoryC({ onDataFromHistoryC, YOUR_LIST, ThisIndexElem }) {
+function HistoryC({ onDataFromHistoryC, YOUR_LIST, ThisIndexElem, LANG_CH }) {
   //const [thisIndex, setThisIndex] = useState("");
 
   const handleThisIndex = (thisIndex) => {
@@ -24,7 +24,7 @@ function HistoryC({ onDataFromHistoryC, YOUR_LIST, ThisIndexElem }) {
 
   return (
     <div>
-      <h2 className="title_hist">Ваша история продуктов:</h2>
+      <h2 className="title_hist">{LANG_CH.HistoryProd}</h2>
       <div className="wrap">
         <div className="content">
           <PositionC
