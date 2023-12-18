@@ -9,7 +9,20 @@
   font-size: 32px;
   padding: 20px;
   color: rgb(0, 0, 0);
+  animation: ading 1s;
 }
+
+@keyframes ading {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
 .position_item:hover {
   transition: 0.2s;
   background-color: #97d4b2;

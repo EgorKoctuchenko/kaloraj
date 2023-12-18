@@ -1,10 +1,27 @@
 import "./AddItem.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function AddItem({ onClose, onConfirm, LANG_CH }) {
   const [InputName, setDishName] = useState("");
   const [InputGramm, setWeight] = useState("");
   const [InputCcal, setCalories] = useState("");
+  const [isAnimating, setAnimating] = useState(false);
+
+  useEffect(() => {
+    if (isAnimating) {
+      // Ждем некоторое время (например, 100 миллисекунд) и затем применяем класс
+      const timeoutId = setTimeout(() => {
+        // Установите класс "closing" после того, как React обновит DOM
+        // Замените "item_menu" на ваш класс
+        document.querySelector(".item_menu").classList.add("closing");
+        // Сбросьте состояние isAnimating
+        setAnimating(false);
+      }, 100);
+
+      // Очистите timeout при размонтировании компонента или изменении состояния
+      return () => clearTimeout(timeoutId);
+    }
+  }, [isAnimating]);
 
   const handleConfirmClick = () => {
     onConfirm({ InputName, InputGramm, InputCcal });
@@ -38,10 +55,23 @@ function AddItem({ onClose, onConfirm, LANG_CH }) {
           onChange={(e) => setCalories(e.target.value)}
         ></input>
         <div className="buttons">
-          <button className="but" onClick={handleConfirmClick}>
+          <button
+            className="but"
+            onClick={() => {
+              setAnimating(true);
+              handleConfirmClick();
+            }}
+          >
             {LANG_CH.ButConfirm}
           </button>
-          <button className="but" onClick={onClose}>
+          <button
+            className="but"
+            onClick={() => {
+              setAnimating(true);
+              console.log(isAnimating + "asd");
+              onClose();
+            }}
+          >
             {LANG_CH.ButReject}
           </button>
         </div>

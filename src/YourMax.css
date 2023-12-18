@@ -19,6 +19,18 @@
   height: 60vh;
   background-color: white;
   border-radius: 20px;
+  animation: ading_item_max 1s;
+}
+
+@keyframes ading_item_max {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .max_data_max {

@@ -189,7 +189,7 @@ function App() {
       newList.splice(IndexToDelete, 1);
       setYourList(newList);
     }
-    setIndexToDelete(-1);
+    //setIndexToDelete(-1);
   };
   ///
   ///Изменить
@@ -214,7 +214,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="back_fone">
       <ChooseBar
         onAddItemClick={handleAddItemClick}
         onYourMaxClick={handleYourMax}

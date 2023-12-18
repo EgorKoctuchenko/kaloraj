@@ -10,6 +10,32 @@
   left: 0;
 }
 
+@keyframes ading_item {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ading_item2 {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.closing {
+  animation: ading_item2 1s;
+}
+
 .item_menu {
   display: flex;
   flex-direction: column;
@@ -17,20 +43,25 @@
   align-items: center;
   width: 400px;
   height: 470px;
-  background-color: white;
+  background-color: rgb(170, 226, 192);
   border-radius: 20px;
+  animation: ading_item 1s;
 }
 
 .input_cl {
   margin-bottom: 50px;
   border: 1px solid black;
   font-size: 1.3em;
-  padding: 5px;
+  padding: 5px 15px;
   border-radius: 50px;
+  background-color: #004445;
+  color: white;
 }
 .label_cl {
+  color: white;
   font-size: 1.5em;
   margin-bottom: 10px;
+  filter: drop-shadow(0px 0px 2px rgb(0, 0, 0));
 }
 
 .buttons {
@@ -40,13 +71,15 @@
 }
 .but:hover {
   transition: 0.5s;
-  background: rgb(154, 255, 172);
+  background: rgb(80, 153, 187);
 }
 
 .but {
+  color: white;
+  filter: drop-shadow(0px 0px 2px rgb(0, 0, 0));
   transition: 0.5s;
   font-size: 1.3em;
   padding: 5px 10px;
   border-radius: 15px;
-  background: rgb(107, 207, 253);
+  background: #004445;
 }
