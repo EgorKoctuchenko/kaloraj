@@ -7,29 +7,26 @@ function AddItem({ onClose, onConfirm, LANG_CH }) {
   const [InputCcal, setCalories] = useState("");
   const [isAnimating, setAnimating] = useState(false);
 
-  useEffect(() => {
-    if (isAnimating) {
-      // Ждем некоторое время (например, 100 миллисекунд) и затем применяем класс
-      const timeoutId = setTimeout(() => {
-        // Установите класс "closing" после того, как React обновит DOM
-        // Замените "item_menu" на ваш класс
-        document.querySelector(".item_menu").classList.add("closing");
-        // Сбросьте состояние isAnimating
-        setAnimating(false);
-      }, 100);
-
-      // Очистите timeout при размонтировании компонента или изменении состояния
-      return () => clearTimeout(timeoutId);
-    }
-  }, [isAnimating]);
-
   const handleConfirmClick = () => {
     onConfirm({ InputName, InputGramm, InputCcal });
   };
 
+  const handleClose = () => {
+    setAnimating(true);
+    setTimeout(() => {
+      onClose();
+    }, 395);
+  };
+  const handleConf = () => {
+    setAnimating(true);
+    setTimeout(() => {
+      handleConfirmClick();
+    }, 395);
+  };
+
   return (
-    <div className="item_wrap">
-      <div className="item_menu">
+    <div className={`item_wrap ${isAnimating ? "light_pop1" : "dark_pop1"}`}>
+      <div className={`item_menu ${isAnimating ? "closing_pop" : "open_pop"}`}>
         <label className="label_cl">{LANG_CH.NamePos}</label>
         <input
           placeholder={LANG_CH.NamePos_2}
@@ -58,20 +55,12 @@ function AddItem({ onClose, onConfirm, LANG_CH }) {
           <button
             className="but"
             onClick={() => {
-              setAnimating(true);
-              handleConfirmClick();
+              handleConf();
             }}
           >
             {LANG_CH.ButConfirm}
           </button>
-          <button
-            className="but"
-            onClick={() => {
-              setAnimating(true);
-              console.log(isAnimating + "asd");
-              onClose();
-            }}
-          >
+          <button className={`but`} onClick={handleClose}>
             {LANG_CH.ButReject}
           </button>
         </div>

@@ -11,15 +11,29 @@ function RenameItem({
   const [InputName, setDishName] = useState(YOUR_LIST[IndexToRename].Name);
   const [InputGramm, setWeight] = useState(YOUR_LIST[IndexToRename].Gramm);
   const [InputCcal, setCalories] = useState(YOUR_LIST[IndexToRename].Kaloraj);
+  const [isAnimating, setAnimating] = useState(false);
 
   console.log(YOUR_LIST[IndexToRename].Name);
   const handleConfirmClick = () => {
     onConfirmRename({ InputName, InputGramm, InputCcal, IndexToRename });
   };
 
+  const handleClose = () => {
+    setAnimating(true);
+    setTimeout(() => {
+      onRenameItem();
+    }, 395);
+  };
+  const handleConf = () => {
+    setAnimating(true);
+    setTimeout(() => {
+      handleConfirmClick();
+    }, 395);
+  };
+
   return (
-    <div className="item_wrap">
-      <div className="item_menu">
+    <div className={`item_wrap ${isAnimating ? "light_pop1" : "dark_pop1"}`}>
+      <div className={`item_menu ${isAnimating ? "closing_pop" : "open_pop"}`}>
         <label className="label_cl">{LANG_CH.NamePos}</label>
         <input
           placeholder={YOUR_LIST[IndexToRename].Name}
@@ -45,10 +59,10 @@ function RenameItem({
           onChange={(e) => setCalories(e.target.value)}
         ></input>
         <div className="buttons">
-          <button className="but" onClick={handleConfirmClick}>
+          <button className="but" onClick={handleConf}>
             {LANG_CH.ButConfirm}
           </button>
-          <button className="but" onClick={onRenameItem}>
+          <button className="but" onClick={handleClose}>
             {LANG_CH.ButReject}
           </button>
         </div>

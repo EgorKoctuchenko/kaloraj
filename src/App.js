@@ -41,6 +41,7 @@ function App() {
   const [IndexToDelete, setIndexToDelete] = useState(-1);
   //Удаления (аним)
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isPopUp, setPopUp] = useState(false);
   //
   //Переключение языка
   //

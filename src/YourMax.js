@@ -5,6 +5,7 @@ function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
   const [InputAge, setAge] = useState("");
   const [InputRoct, setRoct] = useState("");
   const [InputVes, setVes] = useState("");
+  const [isAnimating, setAnimating] = useState(false);
 
   const [selectedGender, setSelectedGender] = useState("Мужчина");
   const [selectedAct, setSelectedAct] = useState("very_low");
@@ -42,6 +43,19 @@ function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
     onConfirmMax(your_result);
   };
 
+  const handleClose = () => {
+    setAnimating(true);
+    setTimeout(() => {
+      onCloseMax();
+    }, 395);
+  };
+  const handleConf = () => {
+    setAnimating(true);
+    setTimeout(() => {
+      handleConfirmClick();
+    }, 395);
+  };
+
   const handleGenderChange = (gender) => {
     setSelectedGender(gender);
   };
@@ -50,8 +64,16 @@ function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
   };
 
   return (
-    <div className="item_wrap_max">
-      <div className="item_menu_max">
+    <div
+      className={`item_wrap_max ${
+        isAnimating ? "light_pop1_max" : "dark_pop1_max"
+      }`}
+    >
+      <div
+        className={`item_menu_max ${
+          isAnimating ? "closing_pop_max" : "open_pop_max"
+        }`}
+      >
         <label className="labels_max">{LANG_CH.GenderU}</label>
         <div className="gender_max">
           <label>
@@ -112,10 +134,15 @@ function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
           <option value="very_high">{LANG_CH.Level5}</option>
         </select>
         <div className="buttons_max">
-          <button className="but_max" onClick={handleConfirmClick}>
+          <button
+            className="but_max"
+            onClick={() => {
+              handleConf();
+            }}
+          >
             {LANG_CH.ButConfirm}
           </button>
-          <button className="but_max" onClick={onCloseMax}>
+          <button className="but_max" onClick={handleClose}>
             {LANG_CH.ButReject}
           </button>
         </div>

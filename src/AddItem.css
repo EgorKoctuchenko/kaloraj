@@ -10,30 +10,57 @@
   left: 0;
 }
 
-@keyframes ading_item {
+@keyframes dark_pop {
   0% {
-    transform: scale(0);
     opacity: 0;
   }
   100% {
-    transform: scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes light_pop {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.dark_pop1 {
+  animation: dark_pop 0.4s;
+}
+.light_pop1 {
+  animation: light_pop 0.4s;
+}
+
+@keyframes ading_item {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 
 @keyframes ading_item2 {
   0% {
     transform: scale(1);
-    opacity: 1;
   }
   100% {
     transform: scale(0);
-    opacity: 0;
   }
 }
 
-.closing {
-  animation: ading_item2 1s;
+.closing_pop {
+  animation-name: ading_item2;
+  animation-duration: 0.4s;
+}
+
+.open_pop {
+  animation-name: ading_item;
+  animation-duration: 0.4s;
 }
 
 .item_menu {
@@ -45,7 +72,6 @@
   height: 470px;
   background-color: rgb(170, 226, 192);
   border-radius: 20px;
-  animation: ading_item 1s;
 }
 
 .input_cl {

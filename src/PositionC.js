@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 function PositionC(props) {
   const [selectedItem, setSelectedItem] = useState(null);
-  console.log(props.isDeleting);
   const handleItemClick = (index) => {
     setSelectedItem((prevSelectedItem) => {
       // Если текущий элемент уже выбран, сбросить выбор, иначе установить выбор
@@ -16,7 +15,7 @@ function PositionC(props) {
     <div
       key={index}
       className={`position_item ${selectedItem === index ? "selected" : ""} ${
-        props.isDeleting ? "deleting" : ""
+        props.isDeleting && index === selectedItem ? "deleting" : ""
       }`}
       onClick={() => handleItemClick(index)}
     >
