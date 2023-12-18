@@ -39,6 +39,8 @@ function App() {
   const [isYourMax, setYourMax] = useState(false);
   const [isRenameItem, setRename] = useState(false);
   const [IndexToDelete, setIndexToDelete] = useState(-1);
+  //Удаления (аним)
+  const [isDeleting, setIsDeleting] = useState(false);
   //
   //Переключение языка
   //
@@ -185,9 +187,13 @@ function App() {
     if (IndexToDelete === -1) {
       console.log("ERROR");
     } else {
-      var newList = [...YOUR_LIST];
-      newList.splice(IndexToDelete, 1);
-      setYourList(newList);
+      setIsDeleting(true);
+      setTimeout(() => {
+        var newList = [...YOUR_LIST];
+        newList.splice(IndexToDelete, 1);
+        setYourList(newList);
+        setIsDeleting(false);
+      }, 400);
     }
     //setIndexToDelete(-1);
   };
@@ -235,6 +241,7 @@ function App() {
         YOUR_LIST={YOUR_LIST}
         ThisIndexElem={handleIndex}
         LANG_CH={LANG_CH[Language]}
+        isDeleting={isDeleting}
       />
       {isAddItemOpen && (
         <AddItem

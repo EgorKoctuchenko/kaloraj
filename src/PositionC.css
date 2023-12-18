@@ -23,6 +23,21 @@
   }
 }
 
+@keyframes ading2 {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+.deleting {
+  animation: ading2 1s;
+}
+
 .position_item:hover {
   transition: 0.2s;
   background-color: #97d4b2;

@@ -2,7 +2,13 @@ import "./HistoryC.css";
 import PositionC from "./PositionC";
 import React, { useEffect, useState } from "react";
 
-function HistoryC({ onDataFromHistoryC, YOUR_LIST, ThisIndexElem, LANG_CH }) {
+function HistoryC({
+  onDataFromHistoryC,
+  YOUR_LIST,
+  ThisIndexElem,
+  LANG_CH,
+  isDeleting,
+}) {
   //const [thisIndex, setThisIndex] = useState("");
 
   const handleThisIndex = (thisIndex) => {
@@ -30,6 +36,7 @@ function HistoryC({ onDataFromHistoryC, YOUR_LIST, ThisIndexElem, LANG_CH }) {
           <PositionC
             YourList={YOUR_LIST}
             GetIndex={handleThisIndex}
+            isDeleting={isDeleting}
           ></PositionC>
         </div>
       </div>
