@@ -1,5 +1,12 @@
+///
+///
+///
+///Добавление предмета(позиции)
+///
+///
+///
 import "./AddItem.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 function AddItem({ onClose, onConfirm, LANG_CH }) {
   const [InputName, setDishName] = useState("");
@@ -10,20 +17,24 @@ function AddItem({ onClose, onConfirm, LANG_CH }) {
   const handleConfirmClick = () => {
     onConfirm({ InputName, InputGramm, InputCcal });
   };
-
+  //Закрытие
   const handleClose = () => {
     setAnimating(true);
     setTimeout(() => {
       onClose();
     }, 395);
   };
+  //
+  //Подтверждение о добавлении предмета(позиции)
   const handleConf = () => {
     setAnimating(true);
     setTimeout(() => {
       handleConfirmClick();
     }, 395);
   };
-
+  //
+  //Возвращаем компонент. Также, для анимации, было добавлено несколько
+  //Классов и тернарных операторов
   return (
     <div className={`item_wrap ${isAnimating ? "light_pop1" : "dark_pop1"}`}>
       <div className={`item_menu ${isAnimating ? "closing_pop" : "open_pop"}`}>

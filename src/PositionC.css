@@ -6,9 +6,14 @@
   justify-content: space-between;
   background-color: #6fb98f;
   margin: 10px 0;
-  font-size: 32px;
+  font-size: 2.5em;
   padding: 20px;
   color: rgb(0, 0, 0);
+  border-radius: 15px;
+  animation: ading 1s;
+}
+
+.adding_item {
   animation: ading 1s;
 }
 
@@ -69,4 +74,10 @@
   box-shadow: 0 0 10px rgb(118, 150, 138);
   color: rgb(0, 0, 0);
   transition: 0.2s;
+}
+
+@media (max-width: 550px) {
+  .position_item {
+    font-size: 2em;
+  }
 }

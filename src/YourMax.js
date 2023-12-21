@@ -1,5 +1,14 @@
+///
+///
+///
+///Рассчет дневного лимита (рассчет происходит по
+///формуле Миффлина-Сан Жеора. Информация об этой
+///формуле, можно увидеть либо здесь, либо в интернете)
+///
+///
+///
 import "./YourMax.css";
-import React, { lazy, useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
   const [InputAge, setAge] = useState("");
@@ -9,9 +18,26 @@ function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
 
   const [selectedGender, setSelectedGender] = useState("Мужчина");
   const [selectedAct, setSelectedAct] = useState("very_low");
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 750);
 
+  //Обновление состояния isSmallScreen (в зависимости от ширины
+  //окна)
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 550);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  //Начальные значения для переменных.
   var activ = 1.2;
   var your_result = 0;
+  //Активность (5 уровней активности)
   const handleConfirmClick = () => {
     switch (selectedAct) {
       case "very_low":
@@ -30,6 +56,7 @@ function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
         activ = 1.9;
         break;
     }
+    //Гендер
     if (selectedGender === "Мужчина") {
       your_result = Math.floor(
         66.5 + (13.75 * InputVes + 5.003 * InputRoct - 6.775 * InputAge) * activ
@@ -39,16 +66,18 @@ function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
         655.1 + (9.563 * InputVes + 1.85 * InputRoct - 4.676 * InputAge) * activ
       );
     }
-    console.log(your_result);
+    //Отправка данных обратно в App
     onConfirmMax(your_result);
   };
 
+  //Закрытие окошка
   const handleClose = () => {
     setAnimating(true);
     setTimeout(() => {
       onCloseMax();
     }, 395);
   };
+  //Закрытие окошка (но с учетом отправки данных)
   const handleConf = () => {
     setAnimating(true);
     setTimeout(() => {
@@ -56,13 +85,17 @@ function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
     }, 395);
   };
 
+  //Выбранный гендер
   const handleGenderChange = (gender) => {
     setSelectedGender(gender);
   };
+  //Выбранная активность
   const handleActChange = (act) => {
     setSelectedAct(act);
   };
 
+  //Обычное окошка, с полем ввода данных (возвраст, вес,
+  //рост, активность, гендер)
   return (
     <div
       className={`item_wrap_max ${
@@ -95,32 +128,62 @@ function YourMax({ onCloseMax, onConfirmMax, LANG_CH }) {
             {LANG_CH.WomanU}
           </label>
         </div>
-        <div className="max_data_max">
-          <label className="labels_max">{LANG_CH.AgeU}</label>
-          <label className="labels_max">{LANG_CH.RoctU}</label>
-          <label className="labels_max">{LANG_CH.VesU}</label>
-          <input
-            placeholder="18"
-            className="input_max"
-            type="number"
-            value={InputAge}
-            onChange={(e) => setAge(e.target.value)}
-          ></input>
-          <input
-            placeholder="180"
-            className="input_max"
-            type="number"
-            value={InputRoct}
-            onChange={(e) => setRoct(e.target.value)}
-          ></input>
-          <input
-            placeholder="75"
-            className="input_max"
-            type="number"
-            value={InputVes}
-            onChange={(e) => setVes(e.target.value)}
-          ></input>
-        </div>
+        {!isSmallScreen && (
+          <div className="max_data_max">
+            <label className="labels_max">{LANG_CH.AgeU}</label>
+            <label className="labels_max">{LANG_CH.RoctU}</label>
+            <label className="labels_max">{LANG_CH.VesU}</label>
+            <input
+              placeholder="18"
+              className="input_max"
+              type="number"
+              value={InputAge}
+              onChange={(e) => setAge(e.target.value)}
+            ></input>
+            <input
+              placeholder="180"
+              className="input_max"
+              type="number"
+              value={InputRoct}
+              onChange={(e) => setRoct(e.target.value)}
+            ></input>
+            <input
+              placeholder="75"
+              className="input_max"
+              type="number"
+              value={InputVes}
+              onChange={(e) => setVes(e.target.value)}
+            ></input>
+          </div>
+        )}
+        {isSmallScreen && (
+          <div className="max_data_max">
+            <label className="labels_max">{LANG_CH.AgeU}</label>
+            <input
+              placeholder="18"
+              className="input_max"
+              type="number"
+              value={InputAge}
+              onChange={(e) => setAge(e.target.value)}
+            ></input>
+            <label className="labels_max">{LANG_CH.RoctU}</label>
+            <input
+              placeholder="180"
+              className="input_max"
+              type="number"
+              value={InputRoct}
+              onChange={(e) => setRoct(e.target.value)}
+            ></input>
+            <label className="labels_max">{LANG_CH.VesU}</label>
+            <input
+              placeholder="75"
+              className="input_max"
+              type="number"
+              value={InputVes}
+              onChange={(e) => setVes(e.target.value)}
+            ></input>
+          </div>
+        )}
         <label className="labels_max">{LANG_CH.FizU}</label>
         <select
           className="activity_max"

@@ -11,7 +11,7 @@ import RenameItem from "./RenameItem";
 
 function App() {
   //Загружаем LIST из localStorage (поскольку пользователь явно будет
-  //возвращаться на сайт :D )
+  //возвращаться на сайт)
   const savedYourList = JSON.parse(localStorage.getItem("YOUR_LIST")) || [{}];
   const [YOUR_LIST, setYourList] = useState(savedYourList);
   useEffect(() => {
@@ -26,24 +26,46 @@ function App() {
     localStorage.setItem("YourLimit", JSON.stringify(YourLimit));
   }, [YourLimit]);
   ///
-  //И, языка! :)
+  //И языка
   //
   const savedLang = parseInt(localStorage.getItem("Language")) || 0;
   const [Language, setLang] = useState(savedLang);
   useEffect(() => {
     localStorage.setItem("Language", JSON.stringify(Language));
   }, [Language]);
+  //
 
   const [YourKaloraj, setYourKaloraj] = useState(0);
   const [isAddItemOpen, setAddItemOpen] = useState(false);
   const [isYourMax, setYourMax] = useState(false);
   const [isRenameItem, setRename] = useState(false);
   const [IndexToDelete, setIndexToDelete] = useState(-1);
-  //Удаления (аним)
+  //Удаления (анимация)
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isPopUp, setPopUp] = useState(false);
+  ///
+  ///Очищение по 0:00
+  const clearYourList = () => {
+    // Очищаем YOUR_LIST
+    setYourList([]);
+    // Обновляем localStorage с пустым списком
+    localStorage.setItem("YOUR_LIST", JSON.stringify([]));
+    // Обновляем дату последней очистки
+    localStorage.setItem("lastClearDate", new Date().toLocaleDateString());
+  };
+
+  // Проверяем, нужно ли очищать YOUR_LIST при следующей загрузки сайта на
+  //Следующий день
+  useEffect(() => {
+    const lastClearDate = localStorage.getItem("lastClearDate");
+    const today = new Date().toLocaleDateString();
+
+    // Если день последней очистки отличается от сегодняшнего, то очищаем
+    if (!lastClearDate || lastClearDate !== today) {
+      clearYourList();
+    }
+  }, []);
   //
-  //Переключение языка
+  //Переключение языка (Да. Здесь много..)
   //
   const LANG_CH = [
     {
@@ -73,6 +95,7 @@ function App() {
       Level3: "Середня",
       Level4: "Висока",
       Level5: "Максимальна",
+      empt: "Поки-що, ваш список порожній!",
     },
     {
       Lang: "RU",
@@ -101,6 +124,7 @@ function App() {
       Level3: "Средняя",
       Level4: "Высокая",
       Level5: "Максимальная",
+      empt: "Пока-что, ваш список пуст!",
     },
     {
       Lang: "EN",
@@ -129,11 +153,11 @@ function App() {
       Level3: "Medium",
       Level4: "High",
       Level5: "Maximum",
+      empt: "So far, your list is empty!",
     },
   ];
-  ///Язык
+  ///Переключение языка
   const handleLang = () => {
-    console.log(Language);
     if (Language + 1 >= 3) {
       setLang(0);
     } else {
@@ -147,46 +171,55 @@ function App() {
     setYourKaloraj(data);
   };
   //
-  //Добавить
+  //Добавить позицию
+  //
+  //Открытие окошка
   const handleAddItemClick = () => {
     setAddItemOpen(true);
   };
-
+  //Закрытие окошка
   const handleCloseAddItem = () => {
     setAddItemOpen(false);
   };
+  //Логика добавления позиции
   const handleNewItemValues = (values) => {
     const newItem = {
       Name: values.InputName,
       Weight: values.InputGramm,
       Kaloraj: values.InputCcal,
     };
+    //Округление (дабы избежать длинной строки в маленькой "коробочке")
     newItem.Kaloraj = Math.floor(newItem.Kaloraj * (newItem.Weight / 100));
 
     setAddItemOpen(false);
     setYourList((prevList) => [...prevList, newItem]);
   };
   //
-  //Рассчет
+  //Рассчет максимума
+  //
+  //Открыть окошко
   const handleYourMax = () => {
     setYourMax(true);
   };
-
+  //Закрыть окошко
   const handleCloseYourMax = () => {
     setYourMax(false);
   };
+  //Функция, дабы полученное значение установить в качестве максимума
   const handleYourLimit = (value_limit) => {
     setYourLimit(value_limit);
     setYourMax(false);
   };
   ///
-  ///Удалить
+  ///Удалить позицию
+  //
+  //Получение индекса (дабы удалить корректно)
   const handleIndex = (valueIndex) => {
     setIndexToDelete(valueIndex);
   };
+  //Логика удаления
   const handleDeleteItem = () => {
     if (IndexToDelete === -1) {
-      console.log("ERROR");
     } else {
       setIsDeleting(true);
       setTimeout(() => {
@@ -196,26 +229,33 @@ function App() {
         setIsDeleting(false);
       }, 400);
     }
+    //Обнуление индекса присутствует в виде комментария. Вдруг оно
+    //потом понадобится?
     //setIndexToDelete(-1);
   };
   ///
-  ///Изменить
+  ///Изменить позицию
+  //
+  //Открыть окошко
   const handleRenameItem = () => {
     setRename(true);
   };
+  //Закрыть окошко
   const handleCloseRenameItem = () => {
     setRename(false);
   };
+  //Логика изменения позиции
   const handleRenameValues = (values) => {
     if (IndexToDelete === -1) {
-      console.log("ER");
     } else {
       YOUR_LIST[values.IndexToRename].Name = values.InputName;
       YOUR_LIST[values.IndexToRename].Gramm = values.InputGramm;
       YOUR_LIST[values.IndexToRename].Kaloraj = values.InputCcal;
-      YOUR_LIST[values.IndexToRename].Kaloraj *=
-        YOUR_LIST[values.IndexToRename].Gramm / 100;
-
+      YOUR_LIST[values.IndexToRename].Kaloraj = Math.floor(
+        YOUR_LIST[values.IndexToRename].Kaloraj *
+          (YOUR_LIST[values.IndexToRename].Gramm / 100)
+      );
+      setYourList((prevList) => [...prevList]);
       setRename(false);
     }
   };

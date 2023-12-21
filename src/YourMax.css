@@ -1,4 +1,5 @@
 .item_wrap_max {
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,8 +18,9 @@
   align-items: center;
   width: 500px;
   height: 550px;
-  background-color: rgb(170, 226, 192);
+  background-color: #2c7973;
   border-radius: 20px;
+  filter: drop-shadow(0px 0px 15px rgb(2, 99, 73));
 }
 
 @keyframes ading_item_max {
@@ -145,4 +147,19 @@
 
 .open_pop_max {
   animation: ading_item_max 0.4s;
+}
+
+@media (max-width: 551px) {
+  .item_menu_max {
+    font-size: 1em;
+    width: 300px;
+    height: 600px;
+  }
+  .max_data_max {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .buttons_max {
+    margin-top: 20px;
+  }
 }

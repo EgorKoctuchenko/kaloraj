@@ -1,3 +1,11 @@
+///
+///
+///
+///Изменение позиции (название, грамовка, калораж)
+///90% логики было взято с добавления позиции
+///
+///
+///
 import "./AddItem.css";
 import React, { useState } from "react";
 
@@ -13,7 +21,6 @@ function RenameItem({
   const [InputCcal, setCalories] = useState(YOUR_LIST[IndexToRename].Kaloraj);
   const [isAnimating, setAnimating] = useState(false);
 
-  console.log(YOUR_LIST[IndexToRename].Name);
   const handleConfirmClick = () => {
     onConfirmRename({ InputName, InputGramm, InputCcal, IndexToRename });
   };

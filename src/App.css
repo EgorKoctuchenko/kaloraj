@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200&family=League+Gothic&family=Nunito:ital,wght@1,600&family=Open+Sans&family=Oswald&family=Roboto+Condensed:ital,wght@0,500;1,400&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -72,6 +74,10 @@ img {
   vertical-align: top;
 }
 
+body {
+  font-family: "Oswald", sans-serif;
+}
+
 .back_fone {
   transition: 0.4s;
   background: rgb(201, 209, 200);
@@ -123,4 +129,10 @@ img {
   display: flex;
   justify-content: center;
   filter: drop-shadow(0px 0px 2px rgb(197, 247, 234));
+}
+
+@media (max-width: 300px) {
+  body {
+    font-size: 0.7em;
+  }
 }
