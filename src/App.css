@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200&family=League+Gothic&family=Nunito:ital,wght@1,600&family=Open+Sans&family=Oswald&family=Roboto+Condensed:ital,wght@0,500;1,400&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+body {
+  font-family: "Oswald", sans-serif;
+}
+
+.back_fone {
+  transition: 0.4s;
+  background: rgb(201, 209, 200);
+  background: -moz-linear-gradient(
+    top,
+    rgba(201, 209, 200, 1) 1%,
+    rgba(4, 68, 53, 1) 49%,
+    rgba(2, 28, 30, 1) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(1%, rgba(201, 209, 200, 1)),
+    color-stop(49%, rgba(4, 68, 53, 1)),
+    color-stop(100%, rgba(2, 28, 30, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(201, 209, 200, 1) 1%,
+    rgba(4, 68, 53, 1) 49%,
+    rgba(2, 28, 30, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(201, 209, 200, 1) 1%,
+    rgba(4, 68, 53, 1) 49%,
+    rgba(2, 28, 30, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(201, 209, 200, 1) 1%,
+    rgba(4, 68, 53, 1) 49%,
+    rgba(2, 28, 30, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(201, 209, 200, 1) 1%,
+    rgba(4, 68, 53, 1) 49%,
+    rgba(2, 28, 30, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9d1c8', endColorstr='#021c1e',GradientType=0 );
+  min-height: 100vh;
+  width: 100%;
+}
+
+.title_app {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(0px 0px 2px rgb(197, 247, 234));
+}
+
+@media (max-width: 300px) {
+  body {
+    font-size: 0.7em;
+  }
+}

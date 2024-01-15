@@ -1,0 +1,13 @@
+.kkal_value {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  letter-spacing: 3px;
+  filter: drop-shadow(0px 0px 15px rgb(197, 247, 234));
+}
+
+.is_bad {
+  color: rgb(124, 24, 24);
+}
