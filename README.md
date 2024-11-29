@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Calorage / Калораж
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[🇺🇸 English](#english-version) | [🇺🇦 Українська](#українська-версія)
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## English Version
 
-### `npm start`
+My first experience with React. This small web application itself offers to interact with foods by counting their calorie content, calculating a person's calorie intake (based on facts such as “Age”, “Weight”, etc.), and every 24 hours, the data on calorie intake per day is reset to zero.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Main functions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- You can add this or that product yourself (even if it's your special recipe)
+- It is possible to calculate the daily calorie intake, taking into account all the necessary facts
+- If the product was wrong, you can delete it or replace any of the parameters in it
+- Every 24 hours, localstorage is updated (i.e., all data on calories already consumed is saved for 24 hours)
 
-### `npm test`
+### Known issues
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- On the one hand, this is not a disadvantage, because there are “exclusive” or “proprietary” recipes for certain products. But on the other hand, the calorie values for such conventional foods as soup, burger, apple should be known (for example, using a database).
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Українська версія
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Перший мій досвід із React. Сам цей невеликий веб-додаток пропонує взаємодіяти з продуктами, рахуючи їхню калорійність, вираховуючи норму споживання калорій людини (з огляду на такі факти, як «Вік», «Вага», тощо), а також кожні 24 години - дані про споживання калорій на добу обнуляються.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Основні функції
 
-### `npm run eject`
+- Є можливість самому додавати той чи інший продукт (навіть якщо це якийсь ваш особливий рецепт)
+- Є можливість порахувати денну норму калорій, враховуючи всі необхідні факти
+- Якщо ж продукт був помилковим - його можна видалити або ж замінити в ньому якийсь із параметрів
+- Кожні 24 години відбувається оновлення localstorage (тобто, протягом 24 годин, всі дані про вже вжиті калорії зберігаються)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Відомі проблеми
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- З одного боку, це не мінус, адже є «ексклюзивні» або «свої» рецепти тих чи інших продуктів. Але з іншого боку - значення калорій для таких умовних продуктів, як: суп, бургер, яблуко - мають бути відомі (наприклад за допомогою Бази даних).
